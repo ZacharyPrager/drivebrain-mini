@@ -9,8 +9,8 @@ namespace core
     template <typename MsgType>
     struct ThreadSafeDeque
     {
-        std::deque<MsgType> deque;
-        std::mutex mtx;
-        std::condition_variable cv;
+        std::deque<MsgType> deque; // Data structure for easily removing / adding to both ends of array
+        std::mutex mtx; // Only one thread can read / write from the deque at a time
+        std::condition_variable cv; // Consumer sleeps until Producer notifies it with this
     };
 }

@@ -1,0 +1,20 @@
+[Unit]
+Description=HyTech mini-drivebrain flowmeter logger
+# Foxglove serves over the network, so wait for it to be up
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# The binary is always copied to this same path after each build (see README),
+# same path the nixos/configuration.nix service uses. MCAPs go to /home/nixos/recordings
+ExecStart=/home/nixos/mini-drivebrain
+Restart=on-failure
+RestartSec=2
+# systemctl stop sends SIGTERM, which sig_handler catches for a clean shutdown
+KillSignal=SIGTERM
+TimeoutStopSec=10
+# root so it can open /dev/gpiochip* (or use a user in the gpio group)
+User=root
+
+[Install]
+WantedBy=multi-user.target

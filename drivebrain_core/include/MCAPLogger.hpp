@@ -36,7 +36,7 @@ namespace core {
             /**
              * Fetches MCAPLogger singleton instance
              *
-             * @retun MCAPLogger instance
+             * @return MCAPLogger instance
              */
             static MCAPLogger& instance();
 

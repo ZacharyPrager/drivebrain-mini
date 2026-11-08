@@ -3,3 +3,8 @@ syntax = "proto3";
 package drivebrain_msgs;
 
 // Add your messages here
+
+message FlowmeterData {
+    uint64 pulse_count = 1;
+    float total_volume_l = 2;
+}
